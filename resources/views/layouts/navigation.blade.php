@@ -15,6 +15,18 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if(Auth::user()->role == 'admin')
+                        <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">Kategori</x-nav-link>
+                        <x-nav-link :href="route('alats.index')" :active="request()->routeIs('alats.*')">Alat</x-nav-link>
+                        <x-nav-link :href="route('peminjamans.index')" :active="request()->routeIs('peminjamans.*')">Pinjaman</x-nav-link>
+                        <x-nav-link :href="route('pengembalians.index')" :active="request()->routeIs('pengembalians.*')">Kembali</x-nav-link>
+                        <x-nav-link :href="route('log-aktifitas.index')" :active="request()->routeIs('log-aktifitas.*')">Log</x-nav-link>
+                    @elseif(Auth::user()->role == 'petugas')
+                        <x-nav-link :href="route('peminjamans.index')" :active="request()->routeIs('peminjamans.*')">Persetujuan</x-nav-link>
+                        <x-nav-link :href="route('pengembalians.index')" :active="request()->routeIs('pengembalians.*')">Monitoring</x-nav-link>
+                        <x-nav-link :href="route('laporans.index')" :active="request()->routeIs('laporans.*')">Laporan</x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -70,6 +82,18 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            @if(Auth::user()->role == 'admin')
+                <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">Kategori</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('alats.index')" :active="request()->routeIs('alats.*')">Alat</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('peminjamans.index')" :active="request()->routeIs('peminjamans.*')">Pinjaman</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pengembalians.index')" :active="request()->routeIs('pengembalians.*')">Kembali</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('log-aktifitas.index')" :active="request()->routeIs('log-aktifitas.*')">Log</x-responsive-nav-link>
+            @elseif(Auth::user()->role == 'petugas')
+                <x-responsive-nav-link :href="route('peminjamans.index')" :active="request()->routeIs('peminjamans.*')">Persetujuan</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pengembalians.index')" :active="request()->routeIs('pengembalians.*')">Monitoring</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('laporans.index')" :active="request()->routeIs('laporans.*')">Laporan</x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
